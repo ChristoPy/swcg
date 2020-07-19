@@ -1,0 +1,26 @@
+{
+  "name": "swcg",
+  "version": "1.0.0",
+  "description": "Something with code generation using JSON",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristoPy/swcg.git"
+  },
+  "keywords": [
+    "json",
+    "JSON",
+    "compiler",
+    "code",
+    "ui"
+  ],
+  "author": "Christopher Ribeiro <christo_campiglia@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChristoPy/swcg/issues"
+  },
+  "homepage": "https://github.com/ChristoPy/swcg#readme"
+}
