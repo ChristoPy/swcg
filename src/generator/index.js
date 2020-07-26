@@ -29,15 +29,15 @@ const generator = {
   $constant,
 }
 
-const generateCode = (instructions) => {
+const generateCode = (instructions = {}) => {
   let finalCode = ''
 
   Object.keys(instructions).forEach((key)=> {
     if (!generator[key]) {
       throw new Error(`Instruction '${key}' is not supported.`)
     }
-    if (reservedIdentifiers.includes(key)) {
-      throw new Error(`Cannot use '${key}' since its a reserved word.`)
+    if (reservedIdentifiers.includes(instructions[key].name)) {
+      throw new Error(`Cannot use '${instructions[key].name}' since its a reserved word.`)
     }
     finalCode += generator[key](instructions[key])
   })

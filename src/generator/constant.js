@@ -22,14 +22,25 @@
   SOFTWARE.
 */
 
-const constant = (name, value) => {
-  let code = `const ${name} = `
-  if (typeof value === 'string') {
-    code += `'${value}'`
-  } else {
-    code += value
+const is = require('is')
+
+const createStringCode = ({ name, value }) => `const ${name} = "${value}";`
+const createBooleanCode = ({ name, value }) => `const ${name} = ${value};`
+const createNumberCode = ({ name, value }) => `const ${name} = ${value};`
+
+const getValueData = (value) => {
+  if (is.string(value)) return createStringCode
+  if (is.boolean(value)) return createBooleanCode
+  if (is.number(value)) return createNumberCode
+  return null
+}
+
+const constant = ({ name, value }) => {
+  const codeGeneratorFunction = getValueData(value)
+  if (!codeGeneratorFunction) {
+    throw new Error(`Received value '${JSON.stringify(value)}' has a unsuported type.`)
   }
-  return code
+  return codeGeneratorFunction({ name, value })
 }
 
 module.exports = constant
