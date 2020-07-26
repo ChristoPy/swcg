@@ -32,7 +32,6 @@ const getValueData = (value) => {
   if (is.string(value)) return createStringCode
   if (is.boolean(value)) return createBooleanCode
   if (is.number(value)) return createNumberCode
-  return null
 }
 
 const constant = ({ name, value }) => {
